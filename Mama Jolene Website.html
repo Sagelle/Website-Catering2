@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More Times Catering</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-cream: #FDF8F3;
+      --color-gold: #C9A962;
+      --color-charcoal: #2D2D2D;
+      --color-rose: #E8B4B8;
+      --color-sage: #A8B5A0;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .font-display {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .gradient-gold {
+      background: linear-gradient(135deg, var(--color-gold) 0%, #DFC07A 50%, var(--color-gold) 100%);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, var(--color-gold), #DFC07A);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(201, 169, 98, 0.2);
+    }
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-gold);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .pattern-bg {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A962' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .scroll-smooth {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full scroll-smooth">
+  <div id="app-wrapper" class="w-full h-full overflow-auto" style="background-color: var(--color-cream);"><!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex justify-between items-center h-20"><a href="#home" class="flex items-center gap-3">
+       <div class="w-12 h-12 rounded-full gradient-gold flex items-center justify-center"><span class="text-white font-display text-xl font-bold">MT</span>
+       </div><span class="font-display text-2xl font-semibold" style="color: var(--color-charcoal);">More Times</span> </a>
+      <div class="hidden md:flex items-center gap-8"><a href="#home" class="nav-link text-sm font-medium uppercase tracking-wider" style="color: var(--color-charcoal);">Home</a> <a href="#cupcakes" class="nav-link text-sm font-medium uppercase tracking-wider" style="color: var(--color-charcoal);">Cupcakes</a> <a href="#platters" class="nav-link text-sm font-medium uppercase tracking-wider" style="color: var(--color-charcoal);">Platters</a> <a href="#events" class="nav-link text-sm font-medium uppercase tracking-wider" style="color: var(--color-charcoal);">Events</a> <a href="#testimonials" class="nav-link text-sm font-medium uppercase tracking-wider" style="color: var(--color-charcoal);">Testimonials</a> <a href="#contact" class="gradient-gold text-white px-6 py-3 rounded-full text-sm font-medium uppercase tracking-wider hover:opacity-90 transition-opacity">Book Now</a>
+      </div><button id="mobile-menu-btn" class="md:hidden p-2" style="color: var(--color-charcoal);">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+       </svg></button>
+     </div>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+     <div class="px-4 py-4 space-y-3"><a href="#home" class="block py-2 text-sm font-medium" style="color: var(--color-charcoal);">Home</a> <a href="#cupcakes" class="block py-2 text-sm font-medium" style="color: var(--color-charcoal);">Cupcakes</a> <a href="#platters" class="block py-2 text-sm font-medium" style="color: var(--color-charcoal);">Platters</a> <a href="#events" class="block py-2 text-sm font-medium" style="color: var(--color-charcoal);">Events</a> <a href="#testimonials" class="block py-2 text-sm font-medium" style="color: var(--color-charcoal);">Testimonials</a> <a href="#contact" class="block gradient-gold text-white px-6 py-3 rounded-full text-sm font-medium text-center">Book Now</a>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="home" class="relative min-h-screen flex items-center pattern-bg pt-20">
+    <div class="absolute inset-0 overflow-hidden">
+     <div class="absolute top-20 right-10 w-64 h-64 rounded-full opacity-20 animate-float" style="background: var(--color-rose);"></div>
+     <div class="absolute bottom-20 left-10 w-48 h-48 rounded-full opacity-20 animate-float" style="background: var(--color-sage); animation-delay: 2s;"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+     <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-center lg:text-left">
+       <p class="text-sm font-medium uppercase tracking-[0.3em] mb-4" style="color: var(--color-gold);">Premium Catering Services</p>
+       <h1 id="hero-title" class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6" style="color: var(--color-charcoal);">Creating Moments<br><span class="text-gradient">Worth Savoring</span></h1>
+       <p id="hero-subtitle" class="text-lg sm:text-xl mb-8 leading-relaxed" style="color: #666;">From intimate celebrations to grand events, we bring exquisite flavors and elegant presentation to every occasion.</p>
+       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"><a href="#contact" class="gradient-gold text-white px-8 py-4 rounded-full text-sm font-semibold uppercase tracking-wider hover:opacity-90 transition-all shadow-lg hover:shadow-xl"> Request a Quote </a> <a href="#events" class="border-2 px-8 py-4 rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-opacity-10 transition-all" style="border-color: var(--color-gold); color: var(--color-gold);"> View Services </a>
+       </div>
+      </div>
+      <div class="relative">
+       <div class="relative w-full aspect-square max-w-lg mx-auto">
+        <div class="absolute inset-0 rounded-full gradient-gold opacity-20"></div>
+        <div class="absolute inset-4 rounded-full bg-white shadow-2xl flex items-center justify-center">
+         <div class="text-center p-8">
+          <div class="text-6xl mb-4">
+           🧁
+          </div>
+          <p class="font-display text-2xl font-semibold" style="color: var(--color-charcoal);">Crafted with Love</p>
+          <p class="text-sm mt-2" style="color: #888;">Since 2015</p>
+         </div>
+        </div>
+        <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full bg-white shadow-lg flex items-center justify-center animate-float"><span class="text-3xl">🎂</span>
+        </div>
+        <div class="absolute -bottom-4 -left-4 w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center animate-float" style="animation-delay: 1s;"><span class="text-2xl">🍰</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Cupcakes Section -->
+   <section id="cupcakes" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <p class="text-sm font-medium uppercase tracking-[0.3em] mb-4" style="color: var(--color-gold);">Sweet Delights</p>
+      <h2 id="cupcakes-title" class="font-display text-4xl sm:text-5xl font-bold mb-6" style="color: var(--color-charcoal);">Artisan Cupcakes</h2>
+      <p class="text-lg max-w-2xl mx-auto" style="color: #666;">Each cupcake is a masterpiece, baked fresh with premium ingredients and decorated with love.</p>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+       <div class="aspect-square flex items-center justify-center" style="background: linear-gradient(135deg, #FFF0F5, #FFE4EC);"><span class="text-7xl">🧁</span>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-xl font-semibold mb-2" style="color: var(--color-charcoal);">Red Velvet Dream</h3>
+        <p class="text-sm mb-4" style="color: #888;">Rich red velvet with cream cheese frosting</p>
+        <p class="font-semibold" style="color: var(--color-gold);">From $4.50 each</p>
+       </div>
+      </div>
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+       <div class="aspect-square flex items-center justify-center" style="background: linear-gradient(135deg, #FFF8E7, #FFE4B5);"><span class="text-7xl">🍫</span>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-xl font-semibold mb-2" style="color: var(--color-charcoal);">Chocolate Truffle</h3>
+        <p class="text-sm mb-4" style="color: #888;">Belgian chocolate with ganache swirl</p>
+        <p class="font-semibold" style="color: var(--color-gold);">From $4.50 each</p>
+       </div>
+      </div>
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+       <div class="aspect-square flex items-center justify-center" style="background: linear-gradient(135deg, #FFF0F0, #FFE0E0);"><span class="text-7xl">🍓</span>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-xl font-semibold mb-2" style="color: var(--color-charcoal);">Strawberry Bliss</h3>
+        <p class="text-sm mb-4" style="color: #888;">Fresh strawberry with buttercream</p>
+        <p class="font-semibold" style="color: var(--color-gold);">From $4.50 each</p>
+       </div>
+      </div>
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+       <div class="aspect-square flex items-center justify-center" style="background: linear-gradient(135deg, #FFFACD, #FFF8DC);"><span class="text-7xl">🍋</span>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-xl font-semibold mb-2" style="color: var(--color-charcoal);">Lemon Sunshine</h3>
+        <p class="text-sm mb-4" style="color: #888;">Zesty lemon with meringue topping</p>
+        <p class="font-semibold" style="color: var(--color-gold);">From $4.50 each</p>
+       </div>
+      </div>
+     </div>
+     <div class="text-center mt-12">
+      <p class="text-sm mb-4" style="color: #888;">Minimum order: 12 cupcakes | Custom flavors and designs available</p><a href="#contact" class="inline-block gradient-gold text-white px-8 py-3 rounded-full text-sm font-semibold uppercase tracking-wider hover:opacity-90 transition-all"> Order Cupcakes </a>
+     </div>
+    </div>
+   </section><!-- Platters Section -->
+   <section id="platters" class="py-24 pattern-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <p class="text-sm font-medium uppercase tracking-[0.3em] mb-4" style="color: var(--color-gold);">Savory Selections</p>
+      <h2 id="platters-title" class="font-display text-4xl sm:text-5xl font-bold mb-6" style="color: var(--color-charcoal);">Gourmet Platters</h2>
+      <p class="text-lg max-w-2xl mx-auto" style="color: #666;">Beautifully arranged platters perfect for any gathering, from casual meetings to elegant affairs.</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8">
+      <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
+       <div class="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style="background: var(--color-rose);"><span class="text-4xl">🥪</span>
+       </div>
+       <h3 class="font-display text-2xl font-semibold text-center mb-4" style="color: var(--color-charcoal);">Sandwich Selection</h3>
+       <ul class="space-y-3 mb-6">
+        <li class="flex items-center gap-3 text-sm" style="color: #666;"><span style="color: var(--color-gold);">✓</span> Assorted finger sandwiches</li>
+        <li class="flex items-center gap-3 text-sm" style="color: #666;"><span style="color: var(--color-gold);">✓</span> Premium deli meats &amp; cheeses</li>
+        <li class="flex items-center gap-3 text-sm" style="color: #666;"><span style="color: var(--color-gold);">✓</span> Vegetarian options included</li>
+        <li class="flex items-center gap-3 text-sm" style="color: #666;"><span style="color: var(--color-gold);">✓</span> Serves 10-15 guests</li>
+       </ul>
+       <p class="text-center font-semibold text-xl" style="color: var(--color-gold);">From $85</p>
+      </div>
+      <div class="card-hover bg-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
+       <div class="absolute top-4 right-4 gradient-gold text-white text-xs font-semibold px-3 py-1 rounded-full">
+        Popular
+       </div>
+       <div class="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style="background: var(--color-sage);"><span class="text-4xl">🧀</span>
+       </div>
+       <h3 class="font-display text-2xl font-semibold text-center mb-4" style="color: var(--color-charcoal);">Cheese &amp; Charcuterie</h3>
+       <ul class="space-y-3 mb-6">
+        <li class="flex items-center gap-3 text-sm" style="color: #666;"><span style="color: var(--color-gold);">✓</span> Artisan cheese selection</li>
+        <li class="flex items-center gap-3 text-sm" style="color: #666;"><span style="color: var(--color-gold);">✓</span> Cured meats &amp; salamis</li>
+        <li class="flex items-center gap-3 text-sm" style="color: #666;"><span style="color: var(--color-gold);">✓</span> Fresh fruits &amp; crackers</li>
+        <li class="flex items-center gap-3 text-sm" style="color: #666;"><span style="color: var(--color-gold);">✓</span> Serves 15-20 guests</li>
+       </ul>
+       <p class="text-center font-semibold text-xl" style="color: var(--color-gold);">From $120</p>
+      </div>
+      <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
+       <div class="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style="background: #FFE4B5;"><span class="text-4xl">🥗</span>
+       </div>
+       <h3 class="font-display text-2xl font-semibold text-center mb-4" style="color: var(--color-charcoal);">Fresh &amp; Healthy</h3>
+       <ul class="space-y-3 mb-6">
+        <li class="flex items-center gap-3 text-sm" style="color: #666;"><span style="color: var(--color-gold);">✓</span> Seasonal vegetable crudités</li>
+        <li class="flex items-center gap-3 text-sm" style="color: #666;"><span style="color: var(--color-gold);">✓</span> Hummus &amp; dips</li>
+        <li class="flex items-center gap-3 text-sm" style="color: #666;"><span style="color: var(--color-gold);">✓</span> Fresh fruit arrangement</li>
+        <li class="flex items-center gap-3 text-sm" style="color: #666;"><span style="color: var(--color-gold);">✓</span> Serves 12-18 guests</li>
+       </ul>
+       <p class="text-center font-semibold text-xl" style="color: var(--color-gold);">From $95</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Events Section -->
+   <section id="events" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <p class="text-sm font-medium uppercase tracking-[0.3em] mb-4" style="color: var(--color-gold);">We Cater To</p>
+      <h2 id="events-title" class="font-display text-4xl sm:text-5xl font-bold mb-6" style="color: var(--color-charcoal);">Events &amp; Occasions</h2>
+      <p class="text-lg max-w-2xl mx-auto" style="color: #666;">From joyous celebrations to moments of remembrance, we're honored to serve at life's most meaningful occasions.</p>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card-hover group relative rounded-2xl overflow-hidden" style="background: linear-gradient(135deg, #FFF0F5 0%, #FFE4EC 100%);">
+       <div class="p-8">
+        <div class="text-5xl mb-4">
+         💒
+        </div>
+        <h3 class="font-display text-2xl font-semibold mb-2" style="color: var(--color-charcoal);">Weddings</h3>
+        <p class="text-sm mb-4" style="color: #666;">Make your special day unforgettable with our elegant wedding catering packages.</p><a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold" style="color: var(--color-gold);"> Learn More 
+         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+         </svg></a>
+       </div>
+      </div>
+      <div class="card-hover group relative rounded-2xl overflow-hidden" style="background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);">
+       <div class="p-8">
+        <div class="text-5xl mb-4">
+         🎂
+        </div>
+        <h3 class="font-display text-2xl font-semibold mb-2" style="color: var(--color-charcoal);">Birthdays</h3>
+        <p class="text-sm mb-4" style="color: #666;">Celebrate another year with custom cakes, cupcakes, and delicious treats.</p><a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold" style="color: var(--color-gold);"> Learn More 
+         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+         </svg></a>
+       </div>
+      </div>
+      <div class="card-hover group relative rounded-2xl overflow-hidden" style="background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);">
+       <div class="p-8">
+        <div class="text-5xl mb-4">
+         🏢
+        </div>
+        <h3 class="font-display text-2xl font-semibold mb-2" style="color: var(--color-charcoal);">Office Parties</h3>
+        <p class="text-sm mb-4" style="color: #666;">Impress your team and clients with professional corporate catering.</p><a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold" style="color: var(--color-gold);"> Learn More 
+         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+         </svg></a>
+       </div>
+      </div>
+      <div class="card-hover group relative rounded-2xl overflow-hidden" style="background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);">
+       <div class="p-8">
+        <div class="text-5xl mb-4">
+         ⛪
+        </div>
+        <h3 class="font-display text-2xl font-semibold mb-2" style="color: var(--color-charcoal);">Church Events</h3>
+        <p class="text-sm mb-4" style="color: #666;">Fellowship gatherings, potlucks, and special church celebrations catered with care.</p><a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold" style="color: var(--color-gold);"> Learn More 
+         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+         </svg></a>
+       </div>
+      </div>
+      <div class="card-hover group relative rounded-2xl overflow-hidden" style="background: linear-gradient(135deg, #FCE4EC 0%, #F8BBD9 100%);">
+       <div class="p-8">
+        <div class="text-5xl mb-4">
+         🎉
+        </div>
+        <h3 class="font-display text-2xl font-semibold mb-2" style="color: var(--color-charcoal);">Celebrations</h3>
+        <p class="text-sm mb-4" style="color: #666;">Graduations, anniversaries, baby showers, and all of life's special moments.</p><a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold" style="color: var(--color-gold);"> Learn More 
+         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+         </svg></a>
+       </div>
+      </div>
+      <div class="card-hover group relative rounded-2xl overflow-hidden" style="background: linear-gradient(135deg, #ECEFF1 0%, #CFD8DC 100%);">
+       <div class="p-8">
+        <div class="text-5xl mb-4">
+         🕊️
+        </div>
+        <h3 class="font-display text-2xl font-semibold mb-2" style="color: var(--color-charcoal);">Memorial Services</h3>
+        <p class="text-sm mb-4" style="color: #666;">Compassionate catering for funeral receptions and memorial gatherings.</p><a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold" style="color: var(--color-gold);"> Learn More 
+         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+         </svg></a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Testimonials Section -->
+   <section id="testimonials" class="py-24" style="background: var(--color-charcoal);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-16">
+      <p class="text-sm font-medium uppercase tracking-[0.3em] mb-4" style="color: var(--color-gold);">What People Say</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold mb-6 text-white">Testimonials</h2>
+     </div>
+     <div class="max-w-4xl mx-auto">
+      <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl relative">
+       <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 gradient-gold rounded-full flex items-center justify-center"><span class="text-white text-2xl">"</span>
+       </div>
+       <div class="text-center">
+        <div class="flex justify-center gap-1 mb-6"><span class="text-2xl" style="color: var(--color-gold);">★</span> <span class="text-2xl" style="color: var(--color-gold);">★</span> <span class="text-2xl" style="color: var(--color-gold);">★</span> <span class="text-2xl" style="color: var(--color-gold);">★</span> <span class="text-2xl" style="color: var(--color-gold);">★</span>
+        </div>
+        <blockquote class="font-display text-2xl md:text-3xl leading-relaxed mb-8" style="color: var(--color-charcoal);">
+         "More Times Catering has been a blessing to our ministry. They catered our annual church picnic, holiday celebrations, and special events with such grace and professionalism. The food is always delicious, beautifully presented, and served with genuine warmth. They truly understand the heart of community gatherings."
+        </blockquote>
+        <div class="flex items-center justify-center gap-4">
+         <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--color-rose), var(--color-sage));"><span class="text-white font-display text-xl font-bold">LG</span>
+         </div>
+         <div class="text-left">
+          <p class="font-semibold" style="color: var(--color-charcoal);">Life Giving Faith Ministries</p>
+          <p class="text-sm" style="color: #888;">Trusted Partner Since 2019</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+       <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+        <div class="flex gap-1 mb-4"><span style="color: var(--color-gold);">★</span> <span style="color: var(--color-gold);">★</span> <span style="color: var(--color-gold);">★</span> <span style="color: var(--color-gold);">★</span> <span style="color: var(--color-gold);">★</span>
+        </div>
+        <p class="text-white/90 mb-4">"The cupcakes for my daughter's birthday were absolutely stunning! Every guest asked where they came from."</p>
+        <p class="text-sm" style="color: var(--color-gold);">— Sarah M., Birthday Party</p>
+       </div>
+       <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+        <div class="flex gap-1 mb-4"><span style="color: var(--color-gold);">★</span> <span style="color: var(--color-gold);">★</span> <span style="color: var(--color-gold);">★</span> <span style="color: var(--color-gold);">★</span> <span style="color: var(--color-gold);">★</span>
+        </div>
+        <p class="text-white/90 mb-4">"Professional, punctual, and the food was exceptional. Our corporate event was a huge success thanks to More Times."</p>
+        <p class="text-sm" style="color: var(--color-gold);">— James T., Corporate Event</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-24 pattern-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid lg:grid-cols-2 gap-12">
+      <div>
+       <p class="text-sm font-medium uppercase tracking-[0.3em] mb-4" style="color: var(--color-gold);">Get In Touch</p>
+       <h2 id="contact-title" class="font-display text-4xl sm:text-5xl font-bold mb-6" style="color: var(--color-charcoal);">Let's Create Something Special</h2>
+       <p class="text-lg mb-8" style="color: #666;">Ready to make your next event unforgettable? Fill out the form and we'll get back to you within 24 hours with a custom quote.</p>
+       <div class="space-y-6">
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: var(--color-rose);"><span class="text-xl">📞</span>
+         </div>
+         <div>
+          <p class="text-sm" style="color: #888;">Call Us</p>
+          <p class="font-semibold" style="color: var(--color-charcoal);">(555) 123-4567</p>
+         </div>
+        </div>
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: var(--color-sage);"><span class="text-xl">✉️</span>
+         </div>
+         <div>
+          <p class="text-sm" style="color: #888;">Email Us</p>
+          <p class="font-semibold" style="color: var(--color-charcoal);">hello@moretimescatering.com</p>
+         </div>
+        </div>
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: #FFE4B5;"><span class="text-xl">📍</span>
+         </div>
+         <div>
+          <p class="text-sm" style="color: #888;">Location</p>
+          <p class="font-semibold" style="color: var(--color-charcoal);">Serving the Greater Metro Area</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="bg-white rounded-3xl p-8 shadow-xl">
+       <form id="contact-form" class="space-y-6">
+        <div class="grid sm:grid-cols-2 gap-6">
+         <div><label for="name" class="block text-sm font-medium mb-2" style="color: var(--color-charcoal);">Your Name</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-opacity-100 transition-colors" style="border-color: #E5E7EB;" placeholder="John Doe">
+         </div>
+         <div><label for="email" class="block text-sm font-medium mb-2" style="color: var(--color-charcoal);">Email Address</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-opacity-100 transition-colors" style="border-color: #E5E7EB;" placeholder="john@example.com">
+         </div>
+        </div>
+        <div><label for="phone" class="block text-sm font-medium mb-2" style="color: var(--color-charcoal);">Phone Number</label> <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-opacity-100 transition-colors" style="border-color: #E5E7EB;" placeholder="(555) 123-4567">
+        </div>
+        <div><label for="event-type" class="block text-sm font-medium mb-2" style="color: var(--color-charcoal);">Event Type</label> <select id="event-type" name="event-type" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-opacity-100 transition-colors" style="border-color: #E5E7EB;"> <option value="">Select an event type</option> <option value="wedding">Wedding</option> <option value="birthday">Birthday Party</option> <option value="corporate">Office/Corporate Event</option> <option value="church">Church Event</option> <option value="celebration">Celebration/Anniversary</option> <option value="memorial">Memorial Service/Funeral</option> <option value="other">Other</option> </select>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-6">
+         <div><label for="date" class="block text-sm font-medium mb-2" style="color: var(--color-charcoal);">Event Date</label> <input type="date" id="date" name="date" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-opacity-100 transition-colors" style="border-color: #E5E7EB;">
+         </div>
+         <div><label for="guests" class="block text-sm font-medium mb-2" style="color: var(--color-charcoal);">Number of Guests</label> <input type="number" id="guests" name="guests" min="1" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-opacity-100 transition-colors" style="border-color: #E5E7EB;" placeholder="50">
+         </div>
+        </div>
+        <div><label for="message" class="block text-sm font-medium mb-2" style="color: var(--color-charcoal);">Tell Us About Your Event</label> <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-opacity-100 transition-colors resize-none" style="border-color: #E5E7EB;" placeholder="Share any details about your event, dietary requirements, or special requests..."></textarea>
+        </div><button type="submit" class="w-full gradient-gold text-white py-4 rounded-xl font-semibold uppercase tracking-wider hover:opacity-90 transition-all shadow-lg hover:shadow-xl"> Request a Quote </button>
+       </form>
+       <div id="form-success" class="hidden text-center py-8">
+        <div class="text-5xl mb-4">
+         ✨
+        </div>
+        <h3 class="font-display text-2xl font-semibold mb-2" style="color: var(--color-charcoal);">Thank You!</h3>
+        <p style="color: #666;">We've received your inquiry and will be in touch within 24 hours.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer style="background: var(--color-charcoal);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+     <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div>
+       <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-full gradient-gold flex items-center justify-center"><span class="text-white font-display font-bold">MT</span>
+        </div><span class="font-display text-xl font-semibold text-white">More Times</span>
+       </div>
+       <p class="text-white/60 text-sm">Creating delicious memories, one event at a time.</p>
+      </div>
+      <div>
+       <h4 class="font-semibold text-white mb-4">Quick Links</h4>
+       <div class="space-y-2"><a href="#cupcakes" class="block text-white/60 text-sm hover:text-white transition-colors">Cupcakes</a> <a href="#platters" class="block text-white/60 text-sm hover:text-white transition-colors">Platters</a> <a href="#events" class="block text-white/60 text-sm hover:text-white transition-colors">Events</a> <a href="#contact" class="block text-white/60 text-sm hover:text-white transition-colors">Contact</a>
+       </div>
+      </div>
+      <div>
+       <h4 class="font-semibold text-white mb-4">Connect With Us</h4>
+       <div class="flex gap-4"><a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"> <span class="text-white">📘</span> </a> <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"> <span class="text-white">📸</span> </a> <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"> <span class="text-white">📌</span> </a>
+       </div>
+      </div>
+     </div>
+     <div class="border-t border-white/10 pt-8 text-center">
+      <p class="text-white/40 text-sm">© 2024 More Times Catering. All rights reserved.</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      hero_title: 'Creating Moments Worth Savoring',
+      hero_subtitle: 'From intimate celebrations to grand events, we bring exquisite flavors and elegant presentation to every occasion.',
+      cupcakes_title: 'Artisan Cupcakes',
+      platters_title: 'Gourmet Platters',
+      events_title: 'Events & Occasions',
+      contact_title: "Let's Create Something Special",
+      background_color: '#FDF8F3',
+      accent_color: '#C9A962',
+      text_color: '#2D2D2D',
+      secondary_color: '#FFFFFF',
+      highlight_color: '#E8B4B8',
+      font_family: 'Cormorant Garamond',
+      font_size: 16
+    };
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          // Update hero section
+          const heroTitle = document.getElementById('hero-title');
+          if (heroTitle) {
+            const titleText = config.hero_title || defaultConfig.hero_title;
+            const parts = titleText.split(' ');
+            if (parts.length > 1) {
+              const firstPart = parts.slice(0, Math.ceil(parts.length / 2)).join(' ');
+              const secondPart = parts.slice(Math.ceil(parts.length / 2)).join(' ');
+              heroTitle.innerHTML = `${firstPart}<br><span class="text-gradient">${secondPart}</span>`;
+            } else {
+              heroTitle.textContent = titleText;
+            }
+          }
+
+          const heroSubtitle = document.getElementById('hero-subtitle');
+          if (heroSubtitle) {
+            heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+          }
+
+          const cupcakesTitle = document.getElementById('cupcakes-title');
+          if (cupcakesTitle) {
+            cupcakesTitle.textContent = config.cupcakes_title || defaultConfig.cupcakes_title;
+          }
+
+          const plattersTitle = document.getElementById('platters-title');
+          if (plattersTitle) {
+            plattersTitle.textContent = config.platters_title || defaultConfig.platters_title;
+          }
+
+          const eventsTitle = document.getElementById('events-title');
+          if (eventsTitle) {
+            eventsTitle.textContent = config.events_title || defaultConfig.events_title;
+          }
+
+          const contactTitle = document.getElementById('contact-title');
+          if (contactTitle) {
+            contactTitle.textContent = config.contact_title || defaultConfig.contact_title;
+          }
+
+          // Apply colors
+          document.documentElement.style.setProperty('--color-cream', config.background_color || defaultConfig.background_color);
+          document.documentElement.style.setProperty('--color-gold', config.accent_color || defaultConfig.accent_color);
+          document.documentElement.style.setProperty('--color-charcoal', config.text_color || defaultConfig.text_color);
+          document.documentElement.style.setProperty('--color-rose', config.highlight_color || defaultConfig.highlight_color);
+
+          // Apply font
+          const fontFamily = config.font_family || defaultConfig.font_family;
+          document.querySelectorAll('.font-display').forEach(el => {
+            el.style.fontFamily = `${fontFamily}, serif`;
+          });
+
+          // Apply font size
+          const baseSize = config.font_size || defaultConfig.font_size;
+          document.body.style.fontSize = `${baseSize}px`;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => window.elementSdk.setConfig({ background_color: value })
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => window.elementSdk.setConfig({ secondary_color: value })
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => window.elementSdk.setConfig({ text_color: value })
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => window.elementSdk.setConfig({ accent_color: value })
+            },
+            {
+              get: () => config.highlight_color || defaultConfig.highlight_color,
+              set: (value) => window.elementSdk.setConfig({ highlight_color: value })
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => window.elementSdk.setConfig({ font_family: value })
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => window.elementSdk.setConfig({ font_size: value })
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['hero_title', config.hero_title || defaultConfig.hero_title],
+          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+          ['cupcakes_title', config.cupcakes_title || defaultConfig.cupcakes_title],
+          ['platters_title', config.platters_title || defaultConfig.platters_title],
+          ['events_title', config.events_title || defaultConfig.events_title],
+          ['contact_title', config.contact_title || defaultConfig.contact_title]
+        ])
+      });
+    }
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Form submission
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      contactForm.classList.add('hidden');
+      formSuccess.classList.remove('hidden');
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9db15fadf26f86bf',t:'MTc3MzMwMzU2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
